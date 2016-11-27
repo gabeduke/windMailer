@@ -6,3 +6,4 @@ forecast_key =
 lat = 37.5000327
 lng = -77.5628374
 
+//TODO add properties for slack #channel
