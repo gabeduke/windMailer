@@ -4,11 +4,11 @@ import slackweb
 import ConfigParser
 
 
-def set_config_file(property_value, property_name):
+def set_config_file(property_header, property_value, property_name):
     changed = False
-    if not Config.get("API_KEYS", property_value):
+    if not Config.get(property_header, property_value):
         i = raw_input("Please enter " + property_name + ": ")
-        Config.set("API_KEYS", property_value, i)
+        Config.set(property_header, property_value, i)
         changed = True
 
     if changed:
@@ -20,14 +20,16 @@ Config = ConfigParser.ConfigParser()
 Config.read("properties")
 
 # setting config file if not already configured
-set_config_file("web_hook", "Slack Web Hook")
-set_config_file("forecast_key", "ForecastIO (Darksky) Api Key")
+set_config_file("API_KEYS", "web_hook", "Slack Web Hook")
+set_config_file("API_KEYS", "forecast_key", "ForecastIO (Darksky) Api Key")
+set_config_file("SLACK", "slack_channel", "Slack Channel (include #)")
 with open('properties', 'w') as configfile:
     Config.write(configfile)
 
 # initializing variables
 web_hook = Config.get("API_KEYS", "web_hook")
 forecast_key = Config.get("API_KEYS", "forecast_key")
+slack_channel = Config.get("Slack", "slack_channel")
 lat = Config.get("VARS", "lat")
 lng = Config.get("VARS", "lng")
 w = ""  # initializing in global context
@@ -45,4 +47,4 @@ for dailyData in byDay.data:
         w += wind_message
 
 slack = slackweb.Slack(url=web_hook)
-slack.notify(text=w, channel="#dukeman_alerts")
+slack.notify(text=w, channel=slack_channel)
