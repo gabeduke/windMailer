@@ -31,34 +31,21 @@ slack_channel = Config.get("SLACK", "slack_channel")
 lat = Config.get("VARS", "lat")
 lng = Config.get("VARS", "lng")
 
+wind_threshold = 10
+w = "7 day forecast does not show wind speeds exceeding " + str(
+    wind_threshold) + "mph"  # initializing in global context
 
-def run():
+# fetching weather
+forecast = forecastio.load_forecast(forecast_key, lat, lng)
+by_day = forecast.daily()
 
-    w = ""  # initializing in global context
+for dailyData in by_day.data:
+    wind = dailyData.windSpeed
+    time = dailyData.time
+    wind_message = "Wind is expected to be " + str(wind) + "mph on " + str(time.strftime("%A\n"))
 
-    # fetching weather
-    forecast = forecastio.load_forecast(forecast_key, lat, lng)
-    by_day = forecast.daily()
+    if wind >= wind_threshold:
+        w += wind_message
 
-    for dailyData in by_day.data:
-        wind = dailyData.windSpeed
-        time = dailyData.time
-        wind_message = "Wind is expected to be " + str(wind) + "mph on " + str(time.strftime("%A\n"))
-
-        if wind > 8:
-            w += wind_message
-
-    slack = slackweb.Slack(url=web_hook)
-    slack.notify(text=w, channel=slack_channel)
-
-
-def main(args=None):
-    """The main routine."""
-    if args is None:
-        args = sys.argv[1:]
-
-    run()
-
-
-if __name__ == "__main__":
-    main()
+slack = slackweb.Slack(url=web_hook)
+slack.notify(text=w, channel=slack_channel)
