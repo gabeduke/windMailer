@@ -32,7 +32,7 @@ lat = Config.get("VARS", "lat")
 lng = Config.get("VARS", "lng")
 
 wind_threshold = 10
-w = "7 day forecast does not show wind speeds exceeding " + str(
+w = "10 day forecast does not show wind speeds exceeding " + str(
     wind_threshold) + "mph"  # initializing in global context
 
 # fetching weather
