@@ -32,7 +32,7 @@ setup(
     #     ]
     # },
 
-    # long_description=open("README.txt").read(),
+    long_description=open("README.md").read(),
 
     # Dependent packages (distributions)
     install_requires=[
