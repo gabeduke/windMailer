@@ -7,5 +7,5 @@ lat = 37.5000327
 lng = -77.5628374
 
 [SLACK]
-slack_channel = sandbox
+slack_channel = dukeman_alerts
 
