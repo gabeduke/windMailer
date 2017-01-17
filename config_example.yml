@@ -1,0 +1,8 @@
+API_KEYS:
+    web_hook: [slack webhook]
+    forecast_key: [forecast.io api key]
+VARS:
+    lat: [latitude]
+    lng: [longitude]
+SLACK:
+    slack_channel: [slack channel]
