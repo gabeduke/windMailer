@@ -10,8 +10,18 @@ You will need to have your Slack webhook and Darksky API keys in order to run th
 
 ## Installation
 
+Clone the repository & install packages
 ```
 git clone https://github.com/gabeduke/windMailer.git
 python setup.py install
+```
+
+Copy the config & fill in datas
+```
+cp config-example.yml config.yml && vim config.yml
+```
+
+run app
+```
 ./app/windmailer
 ```
