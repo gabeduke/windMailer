@@ -1,19 +1,10 @@
 #!/usr/bin/env python
 import forecastio
 import slackweb
-import yaml
-
-with open("config.yml", 'r') as ymlfile:
-    cfg = yaml.load(ymlfile)
-
-for section in cfg:
-    print(section)
-print(cfg['API_KEYS'])
-print(cfg['VARS'])
-print(cfg['SLACK'])
+from settings import *
 
 wind_threshold = 10
-w = "" # initializing in global context
+w = ""  # initializing in global context
 
 # fetching weather
 forecast = forecastio.load_forecast(forecast_key, lat, lng)
