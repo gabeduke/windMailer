@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import forecastio
-import pylab as pl
 from settings import *
 
 # fetching weather
