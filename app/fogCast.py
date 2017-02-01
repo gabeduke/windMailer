@@ -16,8 +16,9 @@ by_hour = forecast.hourly()
 fogTimes = []
 
 for hourlyData in by_hour.data:
-    diff = abs(hourlyData.dewPoint - hourlyData.temperature)
-    if diff <= 10:
+    deg = hourlyData.temperature
+    diff = abs(hourlyData.dewPoint - deg)
+    if deg <= 66 and diff <= 5:
         fogTimes.append('Chance of fog on ' + '{:%a at %I %P}'.format(hourlyData.time))
 
 print('\n').join(fogTimes)
