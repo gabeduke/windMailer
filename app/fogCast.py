@@ -25,7 +25,6 @@ for hourlyData in by_hour.data:
     if deg <= 66 and diff <= 5:
         fogTimes.append('Chance of fog on ' + '{:%a at %I %P}'.format(hourlyData.time))
 
-pdb.set_trace()
 if len(sys.argv)>1 and "debug" in sys.argv[1:]:
     print('\n').join(debug)
 print('\n').join(fogTimes)
