@@ -4,7 +4,7 @@ import yaml
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-with open(os.path.join(__location__, "config.yml"), 'r') as ymlfile:
+with open(os.path.join(__location__, ".env"), 'r') as ymlfile:
     cfg = yaml.load(ymlfile)
 
 API_KEYS = cfg['API_KEYS']
