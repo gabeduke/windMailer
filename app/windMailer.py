@@ -9,6 +9,7 @@ w = ""  # initializing in global context
 # fetching weather
 forecast = forecastio.load_forecast(forecast_key, lat, lng)
 by_day = forecast.daily()
+by_hour = forecast.hourly()
 
 for dailyData in by_day.data:
     wind = dailyData.windSpeed
