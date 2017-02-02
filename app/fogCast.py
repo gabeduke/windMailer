@@ -28,5 +28,7 @@ for hourlyData in by_hour.data:
 if len(sys.argv)>1 and "debug" in sys.argv[1:]:
     print('\n').join(debug)
 
-print('\n').join(fogTimes)
-
+if not fogTimes:
+    print('There is no fog forecasted in the next 48 hours')
+else:
+    print('\n').join(fogTimes)
