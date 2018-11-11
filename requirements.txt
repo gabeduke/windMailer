@@ -1,6 +1,6 @@
 dotenv
 configparser==3.5.0
 python-forecastio==1.3.5
-requests==2.12.1
+requests>=2.20.0
 slackweb==1.0.5
 windMailer==0.1.0
